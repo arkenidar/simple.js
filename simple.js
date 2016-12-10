@@ -1,3 +1,5 @@
+outputMarker=0
+inputMarker=0
 if(typeof prompt==='undefined')prompt = require('readline-sync').prompt;
 
 memory = new Array(100).fill(0);
@@ -37,6 +39,7 @@ while(true){
 	origin = instruction[1]
 	if(origin=='IN') {
 		origin = parseInt(prompt());
+		console.log(origin+'\t\t in: '+inputMarker++);
 		if(origin!=0 && origin!=1){
 			console.log('quit');
 			break;
@@ -48,7 +51,7 @@ while(true){
 
 	destination = instruction[0]
 	if(destination=='PATHSEL') pathsel = origin;
-	else if(destination=='OUT') console.log(origin);
+	else if(destination=='OUT') console.log(origin+'\t\t out: '+outputMarker++);
 	else memory[destination] = origin;
 
 	// path selection
